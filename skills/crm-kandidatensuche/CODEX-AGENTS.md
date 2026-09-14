@@ -4,8 +4,15 @@
 
 Du arbeitest mit einem MCP-Server namens `crm-suche` auf einem Mac. Er verbindet
 dich mit einer PostgreSQL-Datenbank eines Recruiting-CRM:
-- PRODUKTION: Supabase, ~200.000 echte Kandidaten, vertrauliche Personendaten
-- TEST: Neon-Dev-Klon (Branch mcp-dev), 500 synthetische Test-Kandidaten
+- DATENBANK: Neon Postgres "prod-copy" (ep-patient-salad), 122.004 echte
+  Kandidaten, vertrauliche Personendaten
+- Der alte Neon-Dev-Klon (Branch mcp-dev) wurde geloescht. Supabase ist
+  langfristiges Ziel, aber noch NICHT eingespielt.
+
+Der Server (v1.6.0) wird von den MCP-Clients (Kimi CLI, Codex) bei Bedarf selbst
+gestartet (stdio, KEIN launchd mehr). Konfiguration: ~/.kimi-code/mcp.json bzw.
+~/.codex/config.toml, zeigt auf das Bundle crm-mcp-bundle-v1-4. Die .env im
+Bundle ist die einzige Zugangsdaten-Quelle.
 
 Die Kandidaten kommen aus einem Legacy-PHP-CRM (Jobstep). Die Suchlogik ist
 1:1 aus dessen Oberflaeche uebernommen (17 Filter + Suchbox) und in der
@@ -41,9 +48,9 @@ Postgres-Funktion `crm_search_candidates` verpackt.
 - `SKILL.md` (skills/crm-kandidatensuche/) - Arbeitsablaeufe fuer den Agenten
 - `TOOLS.md` (dieser Ordner) - Referenz ALLER 18 Tools mit Parametern
 - `TODO.md` - Projektstand, offene Punkte, Ideen
-- `db-setup/` - SQL fuer Supabase-Produktion
-- `neon-dev/` - SQL fuer den Neon-Test-Klon
-- `crm-mcp/` - der Server-Code (laeuft per launchd auf dem Mac)
+- `db-setup/` - SQL-Setup: Rollen, Suchfunktion, Trigger, Synonyme
+- `neon-dev/` - Neon-Setup inkl. Schema-Referenz
+- `crm-mcp/` - der Server-Code (v1.6.0; MCP-Clients starten ihn, kein launchd)
 
 ---
 

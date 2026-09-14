@@ -1,0 +1,2 @@
+crm-mcp-bundle v1.12 - 14.09.2026 14:05
+Enthaelt: Suchfunktion (DECLARE-Fix), Gruppen-Matrix, Remote-Deploy, Skills 1.6

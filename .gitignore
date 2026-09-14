@@ -1,0 +1,17 @@
+# Secrets & lokale Dateien
+.env
+.env.bak.*
+*.pem
+
+# Node
+node_modules/
+npm-debug.log*
+
+# macOS / Editor
+.DS_Store
+*.swp
+
+# Build-Output / Exporte
+dist/
+exports/
+*.xlsx
